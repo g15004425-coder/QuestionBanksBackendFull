@@ -1,0 +1,26 @@
+<h1>Invoice {{invoiceNumber}}</h1>
+<p>Issue Date: {{formatDate issueDate}}</p>
+<p>Due Date: {{formatDate dueDate}}</p>
+
+<table border="1" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{formatCurrency this.amount}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<p>Subtotal: {{formatCurrency subtotal}}</p>
+<p>Tax: {{formatCurrency taxAmount}}</p>
+<p>Total: {{formatCurrency totalAmount}}</p>
+
+<p><a href="{{paymentUrl}}">Pay Invoice</a></p>
